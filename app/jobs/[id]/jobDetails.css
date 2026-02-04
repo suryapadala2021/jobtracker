@@ -1,0 +1,236 @@
+.jd-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 24px 16px;
+}
+
+.jd-container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.jd-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.jd-back-link,
+.jd-page-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.jd-back-icon {
+  font-size: 12px;
+}
+
+.jd-page-tag {
+  color: #64748b;
+}
+
+.jd-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.jd-main-card,
+.jd-side-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+  padding: 16px;
+}
+
+.jd-main-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.jd-open-tag {
+  display: inline-block;
+  font-size: 11px;
+  color: #15803d;
+}
+
+.jd-job-title {
+  margin: 8px 0 0;
+  font-size: 24px;
+  color: #0f172a;
+}
+
+.jd-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.jd-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+  background: #f8fafc;
+  border-radius: 999px;
+  padding: 4px 8px;
+}
+
+.jd-meta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #10b981;
+}
+
+.jd-logo-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  background: #e2e8f0;
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.jd-logo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.jd-info-grid,
+.jd-detail-grid {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.jd-info-card,
+.jd-detail-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.jd-info-label {
+  margin: 0;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.jd-info-value {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.jd-summary-card,
+.jd-skills-section {
+  margin-top: 14px;
+}
+
+.jd-summary-title,
+.jd-skills-title,
+.jd-side-title {
+  margin: 0;
+  font-size: 16px;
+  color: #0f172a;
+}
+
+.jd-summary-text,
+.jd-side-text,
+.jd-skills-empty {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.jd-skills-list {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.jd-skill-tag {
+  border: 1px solid #e2e8f0;
+  border-radius: 999px;
+  font-size: 12px;
+  color: #334155;
+  padding: 4px 8px;
+}
+
+.jd-side-column {
+  display: grid;
+  gap: 12px;
+}
+
+.jd-side-card-alt {
+  background: #f8fafc;
+}
+
+.jd-apply-button,
+.jd-secondary-button {
+  width: 100%;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.jd-apply-button {
+  margin-top: 12px;
+  border: 1px solid #2563eb;
+  background: #2563eb;
+  color: #fff;
+}
+
+.jd-secondary-button {
+  margin-top: 25px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #334155;
+  display: inline-block;
+}
+
+.jd-prep-list {
+  margin: 10px 0 0;
+  padding-left: 16px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.jd-prep-item + .jd-prep-item {
+  margin-top: 6px;
+}
+
+@media (min-width: 900px) {
+  .jd-grid {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .jd-info-grid,
+  .jd-detail-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

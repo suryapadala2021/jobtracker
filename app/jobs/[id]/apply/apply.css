@@ -1,0 +1,110 @@
+.applyPage {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.applyCard {
+  width: 100%;
+  max-width: 620px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 20px 50px -38px rgba(15, 23, 42, 0.7);
+}
+
+.applyTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #0f172a;
+}
+
+.applySubtitle {
+  margin: 8px 0 0;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.applyForm {
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.applyField {
+  display: grid;
+  gap: 6px;
+  color: #334155;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.applyInput,
+.applyTextarea {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  color: #0f172a;
+  background: #fff;
+}
+
+.applyInput:focus,
+.applyTextarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.applyTextarea {
+  resize: vertical;
+}
+
+.applyActions {
+  margin-top: 4px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.applyStatusMessage {
+  min-height: 24px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  padding: 4px 8px;
+}
+
+.applyErrorMessage {
+  background: #fff1f2;
+  color: #be123c;
+  border: 1px solid #fecdd3;
+}
+
+.applySuccessMessage {
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.applyPrimaryButton {
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 18px;
+  cursor: pointer;
+}
+
+.applySecondaryButton {
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  font-weight: 600;
+  padding: 10px 18px;
+}

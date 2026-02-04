@@ -1,0 +1,145 @@
+.loadingPage {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding: 40px 24px;
+}
+
+.loadingContainer {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 768px;
+}
+
+.loadingPill {
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.loadingPillDot {
+  display: inline-flex;
+  height: 24px;
+  width: 24px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.loadingCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  padding: 32px;
+  box-shadow: 0 24px 60px -36px rgba(15, 23, 42, 0.7);
+}
+
+.loadingGlowTop {
+  pointer-events: none;
+  position: absolute;
+  top: -40px;
+  right: 24px;
+  height: 112px;
+  width: 112px;
+  border-radius: 999px;
+  background: rgba(224, 231, 255, 0.6);
+  filter: blur(32px);
+}
+
+.loadingGlowBottom {
+  pointer-events: none;
+  position: absolute;
+  bottom: -48px;
+  left: 24px;
+  height: 112px;
+  width: 112px;
+  border-radius: 999px;
+  background: rgba(224, 242, 254, 0.6);
+  filter: blur(32px);
+}
+
+.loadingHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.loadingMain {
+  flex: 1;
+}
+
+.loadingLine {
+  height: 16px;
+  border-radius: 999px;
+  background: #e2e8f0;
+}
+
+.loadingTag {
+  height: 24px;
+  width: 96px;
+  border-radius: 999px;
+  background: #d1fae5;
+}
+
+.loadingTitle {
+  margin-top: 16px;
+  height: 32px;
+  width: 75%;
+  border-radius: 12px;
+  background: #e2e8f0;
+}
+
+.loadingSubtitle {
+  margin-top: 12px;
+  height: 16px;
+  width: 160px;
+  border-radius: 8px;
+  background: #e2e8f0;
+}
+
+.loadingLogo {
+  height: 48px;
+  width: 48px;
+  border-radius: 16px;
+  background: #c7d2fe;
+}
+
+.loadingBody {
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  padding: 16px;
+}
+
+.loadingActions {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.loadingAction {
+  height: 36px;
+  width: 112px;
+  border-radius: 999px;
+  background: #c7d2fe;
+}
+
+.loadingActionAlt {
+  background: #e2e8f0;
+}

@@ -1,0 +1,184 @@
+.registerShell {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.registerPromo {
+  display: none;
+  width: 50%;
+  background: linear-gradient(135deg, #4f46e5, #6d28d9);
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+}
+
+.promoContent {
+  max-width: 448px;
+}
+
+.promoTitle {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.promoText {
+  margin-top: 16px;
+  font-size: 1.125rem;
+  color: #e0e7ff;
+}
+
+.promoList {
+  margin-top: 32px;
+  display: grid;
+  gap: 12px;
+  color: #e0e7ff;
+}
+
+.registerPanel {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  padding: 0 24px;
+}
+
+.registerCard {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 32px;
+  box-shadow: 0 18px 45px -28px rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.registerCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px -30px rgba(15, 23, 42, 0.85);
+}
+
+.registerHeader {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.registerBadge {
+  margin: 0 auto 16px;
+  display: flex;
+  height: 48px;
+  width: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: #4f46e5;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #ffffff;
+  box-shadow: 0 12px 24px -16px rgba(79, 70, 229, 0.9);
+}
+
+.registerTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.registerSubtitle {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.fieldInput {
+  margin-top: 4px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  padding: 8px 12px;
+}
+
+.submitButton {
+  width: 100%;
+  border-radius: 8px;
+  background: #4f46e5;
+  padding: 10px 0;
+  font-weight: 600;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.submitButton:hover {
+  background: #4338ca;
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.errorBanner {
+  min-height: 40px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 8px 12px;
+  font-size: 0.875rem;
+}
+
+.errorActive {
+  border-color: #fecaca;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+.errorIdle {
+  color: transparent;
+}
+
+.registerFooter {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.registerLink {
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.registerLink:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 1024px) {
+  .registerPromo {
+    display: flex;
+  }
+
+  .registerPanel {
+    width: 50%;
+  }
+
+  .registerCard {
+    max-width: 448px;
+  }
+}
