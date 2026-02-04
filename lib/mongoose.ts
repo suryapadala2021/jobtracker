@@ -1,7 +1,11 @@
 // lib/mongoose.ts
 import mongoose from "mongoose";
 
-const MONGODB_URI = 'REDACTED_MONGO_URI';
+const MONGODB_URI = process.env.MONGODB_URI;
+
+if (!MONGODB_URI) {
+  throw new Error("MONGODB_URI is not set in environment variables");
+}
 
 type MongooseCache = {
   conn: mongoose.Mongoose | null;

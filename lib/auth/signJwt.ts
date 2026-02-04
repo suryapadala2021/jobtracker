@@ -2,11 +2,13 @@
 import { jwtVerify, SignJWT } from "jose";
 import { TextEncoder } from "util";
 
-const JWT_SECRET = "REDACTED_JWT_SECRET";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!JWT_SECRET) {
     throw new Error("JWT_SECRET is not set in environment variables");
 }
+
+const JWT_SECRET_KEY = new TextEncoder().encode(JWT_SECRET);
 
 type JwtPayload = {
     sub: string;   // user id
@@ -15,23 +17,19 @@ type JwtPayload = {
 };
 
 export async function signJwt(payload: JwtPayload) {
-    const secret = new TextEncoder().encode(JWT_SECRET);
-
     const token = await new SignJWT(payload)
         .setProtectedHeader({ alg: "HS256" })
         .setIssuedAt()
         .setExpirationTime("7d")
         .setSubject(payload.sub)
-        .sign(secret)
+        .sign(JWT_SECRET_KEY)
 
     return token;
 }
 
 export async function verifyJwt(token: string) {
-    const secret = new TextEncoder().encode(JWT_SECRET);
-
     try {
-        const { payload } = await jwtVerify(token, secret);
+        const { payload } = await jwtVerify(token, JWT_SECRET_KEY);
         return payload as JwtPayload;
     } catch (error) {
         console.error("JWT verification failed:", error);
