@@ -2,20 +2,34 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useActionState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import "./apply.css";
 import { applyJobAction, type JobApplyFormState } from "./action";
+import { useAppliedApplications } from "../../AppliedApplicationsProvider";
 
 const initialState: JobApplyFormState = {};
 
 export default function JobApplyComponent() {
   const params = useParams<{ id: string }>();
   const jobId = params?.id ?? "";
+  const { refreshAppliedData } = useAppliedApplications();
+  const handledSuccess = useRef(false);
 
   const [state, formAction, isPending] = useActionState<
     JobApplyFormState,
     FormData
   >(applyJobAction, initialState);
+
+  useEffect(() => {
+    if (!state?.success) {
+      handledSuccess.current = false;
+      return;
+    }
+
+    if (handledSuccess.current) return;
+    handledSuccess.current = true;
+    void refreshAppliedData();
+  }, [refreshAppliedData, state?.success]);
 
   return (
     <main className="applyPage">

@@ -57,7 +57,7 @@ export async function loginAction(
   const token = await signJwt({
     sub: user._id.toString(),
     email: user.email,
-    role: user.role,
+    role: user.role
   });
 
   await setSessionCookie(token);

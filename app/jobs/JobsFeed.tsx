@@ -5,18 +5,24 @@ import { ClientJob } from "../commonFunction/convertClientJobs";
 import { useRouter, useSearchParams } from "next/navigation";
 import JobCard from "./JobCard";
 import EmptyState from "./EmptyState";
+import { ClientApplication } from "../commonFunction/convertClientApplication";
+import ApplicationCard from "./[id]/apply/ApplicationCard";
+import { useAppliedApplications } from "./AppliedApplicationsProvider";
 
-type Props = {
-  initialJobs: ClientJob[];
+type BaseProps = {
   page: number;
   totalPages: number;
 };
 
+type Props =
+  | (BaseProps & { activeTab: "all"; list: ClientJob[] })
+  | (BaseProps & { activeTab: "applied"; list: ClientApplication[] });
 
-export default function JobsFeed({ initialJobs, page, totalPages }: Props) {
-  const jobs = initialJobs;
+
+export default function JobsFeed({ list, page, totalPages, activeTab }: Props) {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const { applications, isLoading } = useAppliedApplications();
 
   function handleNavPage(page: number) {
     if (page < 1 || page > totalPages) return;
@@ -25,13 +31,35 @@ export default function JobsFeed({ initialJobs, page, totalPages }: Props) {
     router.push(`/jobs?${params.toString()}`);
   }
 
+  if (activeTab === "applied") {
+    const appliedList = applications;
+
+    return (
+      <section className="jobsFeed">
+        <div className="resultsArea">
+          {isLoading && (
+            <p className="pageInfo">Loading applied jobs...</p>
+          )}
+          {!isLoading && appliedList.length === 0 && <EmptyState content="applied" />}
+          {!isLoading && appliedList.length > 0 && (
+            <div className="list">
+              {appliedList.map((application) => (
+                <ApplicationCard key={application._id} application={application} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="jobsFeed">
       <div className="resultsArea">
-        {jobs.length === 0 && <EmptyState />}
-        {jobs.length > 0 && (
+        {list.length === 0 && <EmptyState content="jobs" />}
+        {list.length > 0 && (
           <div className="list">
-            {jobs.map((job) => (
+            {list.map((job) => (
               <JobCard key={job._id} job={job} />
             ))}
           </div>

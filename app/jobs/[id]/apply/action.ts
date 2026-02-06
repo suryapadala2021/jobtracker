@@ -5,6 +5,7 @@ import Application from "@/models/Application";
 import Job from "@/models/Job";
 import getCurrentUser from "@/app/commonFunction/getCurrentUser";
 import { Types } from "mongoose";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 export type JobApplyFormState = {
@@ -31,7 +32,6 @@ export async function applyJobAction(
     resumeLink: String(formData.get("resumeLink") || "").trim(),
     note: String(formData.get("note") || "").trim(),
   };
-  console.log(input)
   const parsed = applySchema.safeParse(input);
   if (!parsed.success) {
     return { error: "Please fill all fields with valid values." };
@@ -97,6 +97,9 @@ export async function applyJobAction(
       resumeLink: parsed.data.resumeLink,
       note: parsed.data.note || undefined,
     });
+
+    revalidatePath("/jobs");
+    revalidatePath(`/jobs/${parsed.data.jobId}`);
 
     return { success: "Application submitted successfully." };
   } catch (err) {

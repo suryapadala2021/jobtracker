@@ -1,5 +1,6 @@
 
 import { jwtVerify, SignJWT } from "jose";
+import { Types } from "mongoose";
 import { TextEncoder } from "util";
 
 const JWT_SECRET = process.env.JWT_SECRET;

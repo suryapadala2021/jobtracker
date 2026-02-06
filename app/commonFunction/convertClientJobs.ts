@@ -15,6 +15,8 @@ export type ClientJob = {
     companyName: string;
     companyLogo: string;
     textScore: string | undefined;
+    isApplied: boolean;
+    appliedJobId: string;
 };
 
 function salaryFormate(min: any, max: any) {
@@ -63,6 +65,8 @@ export function mapRawJobToClientJob(job: any): ClientJob {
         salaryLabel: salaryFormate(job.salaryMin, job.salaryMax),
         companyName: String(job.companyName ?? ""),
         companyLogo: String(job.companyLogo ?? ""),
-        textScore: job.textScore
+        textScore: job.textScore,
+        isApplied: Boolean(job.isApplied),
+        appliedJobId: typeof job.appliedJobId === "string" ? job.appliedJobId : ""
     };
 }

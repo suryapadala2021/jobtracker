@@ -1,0 +1,215 @@
+.applicationCard {
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 16px;
+  background: #ffffff;
+  min-height: 240px;
+}
+
+.applicationHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.applicationCompanyRow {
+  display: flex;
+  gap: 12px;
+}
+
+.applicationLogo {
+  width: 40px;
+  height: 40px;
+  background: #eee;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  overflow: hidden;
+}
+
+.applicationTitle {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.applicationMeta {
+  font-size: 14px;
+  color: #666;
+}
+
+.applicationDot {
+  margin: 0 6px;
+}
+
+.applicationLevelBadge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+}
+
+.applicationLevelText {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.applicationLevelState {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.applicationToneApplied {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #1d4ed8;
+}
+
+.applicationToneShortlisted {
+  background: #e6f7ed;
+  border-color: #a7f3d0;
+  color: #067647;
+}
+
+.applicationToneRejected {
+  background: #fdecea;
+  border-color: #fecaca;
+  color: #b42318;
+}
+
+.applicationDescription {
+  margin: 12px 0;
+  color: #444;
+}
+
+.applicationLevelWrap {
+  margin-bottom: 12px;
+  width: min(100%, 320px);
+  --application-progress-color: #2563eb;
+}
+
+.applicationProgressShortlisted {
+  --application-progress-color: #067647;
+}
+
+.applicationProgressRejected {
+  --application-progress-color: #b42318;
+}
+
+.applicationLevelTrack {
+  display: grid;
+  grid-template-columns: 24px minmax(64px, 1fr) 24px minmax(64px, 1fr) 24px;
+  align-items: center;
+  gap: 8px;
+}
+
+.applicationLevelNode {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 700;
+  background: #ffffff;
+}
+
+.applicationLevelNode.isActive {
+  border-color: var(--application-progress-color);
+  color: #ffffff;
+  background: var(--application-progress-color);
+}
+
+.applicationLevelLine {
+  height: 3px;
+  width: 100%;
+  background: #e2e8f0;
+  border-radius: 999px;
+}
+
+.applicationLevelLine.isActive {
+  background: var(--application-progress-color);
+}
+
+.applicationLevelLabels {
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: 24px minmax(64px, 1fr) 24px minmax(64px, 1fr) 24px;
+  color: #64748b;
+  font-size: 11px;
+}
+
+.applicationLevelLabels span:nth-child(1) {
+  grid-column: 1;
+  justify-self: center;
+}
+
+.applicationLevelLabels span:nth-child(2) {
+  grid-column: 3;
+  justify-self: center;
+}
+
+.applicationLevelLabels span:nth-child(3) {
+  grid-column: 5;
+  justify-self: center;
+}
+
+.applicationTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.applicationTag {
+  background: #f3f4f6;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.applicationFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.applicationType {
+  font-size: 12px;
+  color: #666;
+}
+
+.applicationActionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.applicationActionBtn:hover {
+  background: #dbeafe;
+  border-color: #1d4ed8;
+  color: #1e40af;
+}
+
+.applicationActionDisabled {
+  color: #94a3b8;
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  cursor: not-allowed;
+}

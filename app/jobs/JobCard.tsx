@@ -1,5 +1,6 @@
 "use client"
 import { useRouter } from "next/navigation";
+import { useAppliedApplications } from "./AppliedApplicationsProvider";
 import "./JobCard.css"
 function formatRange(min: number | null, max: number | null, suffix: string) {
     if (min === null && max === null) return null;
@@ -24,9 +25,12 @@ interface Job {
 
 export default function JobCard({ job }: { job: Job }) {
     const router = useRouter()
+    const { isJobApplied, getAppliedJobId } = useAppliedApplications();
     const experience = formatRange(job.experienceMin, job.experienceMax, " yrs");
     const salary = job.salaryLabel;
     const statusClass = job.status === "closed" ? "statusClosed" : "statusOpen";
+    const applied = isJobApplied(job._id);
+    const appliedJobId = getAppliedJobId(job._id);
 
     return (
         <article
@@ -63,6 +67,7 @@ export default function JobCard({ job }: { job: Job }) {
             <div className="tags">
                 {experience ? <span className="tag">{experience}</span> : null}
                 {salary ? <span className="tag">{salary}</span> : null}
+                
                 {job.skills.slice(0, 3).map((skill) => (
                     <span key={skill} className="tag">
                         {skill}

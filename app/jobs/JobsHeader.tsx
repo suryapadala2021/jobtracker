@@ -24,6 +24,7 @@ export default function JobsHeader() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.toString();
+  const activeTab = searchParams.get("tab") === "applied" ? "applied" : "all";
 
   const [draft, setDraft] = useState<FilterDraft>(() => getDraftFromQuery(query));
   const [maxSalaryBound, setMaxSalaryBound] = useState(0);
@@ -61,6 +62,7 @@ export default function JobsHeader() {
     e.preventDefault();
 
     const params = new URLSearchParams(query);
+    params.delete("tab");
 
     if (draft.search) params.set("search", draft.search);
     else params.delete("search");
@@ -78,6 +80,20 @@ export default function JobsHeader() {
     router.push(nextQuery ? `/jobs?${nextQuery}` : "/jobs");
   }
 
+  function switchTab(nextTab: "all" | "applied") {
+    const params = new URLSearchParams(query);
+    params.delete("page");
+
+    if (nextTab === "applied") {
+      params.set("tab", "applied");
+    } else {
+      params.delete("tab");
+    }
+
+    const nextQuery = params.toString();
+    router.push(nextQuery ? `/jobs?${nextQuery}` : "/jobs");
+  }
+
   return (
     <header className="header compact">
       <div className="headerTop">
@@ -87,84 +103,103 @@ export default function JobsHeader() {
         </div>
       </div>
 
-      <form
-        onKeyDown={(e) => {
-          if (e.key === "Enter") e.preventDefault();
-        }}
-        onSubmit={applyFilters}
-        className="filterBar"
-      >
-        <div className="filterLeft">
-          <input
-            className="filterInput"
-            placeholder="Search by title, skills, company, location"
-            type="search"
-            value={draft.search}
-            onChange={(e) => setDraft((prev) => ({ ...prev, search: e.target.value }))}
-          />
+      <div className="jobsTabs">
+        <button
+          type="button"
+          className={`jobsTab ${activeTab === "all" ? "active" : ""}`}
+          onClick={() => switchTab("all")}
+        >
+          All Jobs
+        </button>
+        <button
+          type="button"
+          className={`jobsTab ${activeTab === "applied" ? "active" : ""}`}
+          onClick={() => switchTab("applied")}
+        >
+          Applied Jobs
+        </button>
+      </div>
 
-          <div className="filterBlock">
-            <label>Salary (LPA)</label>
-            <div className="rangeRow">
-              <span>{draft.minSalary / 100000}+ LPA</span>
-              <input
-                type="range"
-                min={0}
-                max={maxSalaryBound}
-                step={100000}
-                value={draft.minSalary}
-                onChange={(e) =>
-                  setDraft((prev) => ({ ...prev, minSalary: Number(e.target.value) }))
-                }
-              />
+      {activeTab === "all" && (
+        <form
+          onKeyDown={(e) => {
+            if (e.key === "Enter") e.preventDefault();
+          }}
+          onSubmit={applyFilters}
+          className="filterBar"
+        >
+          <div className="filterLeft">
+            <input
+              className="filterInput"
+              placeholder="Search by title, skills, company, location"
+              type="search"
+              value={draft.search}
+              onChange={(e) => setDraft((prev) => ({ ...prev, search: e.target.value }))}
+            />
+
+            <div className="filterBlock">
+              <label>Salary (LPA)</label>
+              <div className="rangeRow">
+                <span>{draft.minSalary / 100000}+ LPA</span>
+                <input
+                  type="range"
+                  min={0}
+                  max={maxSalaryBound}
+                  step={100000}
+                  value={draft.minSalary}
+                  onChange={(e) =>
+                    setDraft((prev) => ({ ...prev, minSalary: Number(e.target.value) }))
+                  }
+                />
+              </div>
+            </div>
+
+            <div className="filterBlock experienceFilter">
+              <label htmlFor="experienceRange">Experience (years)</label>
+              <select
+                id="experienceRange"
+                className="experienceSelect"
+                value={draft.exp}
+                onChange={(e) => setDraft((prev) => ({ ...prev, exp: e.target.value }))}
+              >
+                <option value="">Any experience</option>
+                <option value="0-3">0-3</option>
+                <option value="3-5">3-5</option>
+                <option value="5-10">5-10</option>
+                <option value="10-15">10-15</option>
+                <option value="15-20">15-20</option>
+                <option value="20">20+</option>
+              </select>
+            </div>
+
+            <div className="statusFilter">
+              <label className="statusHeading" htmlFor="statusSwitch">
+                Job status
+              </label>
+              <label className="statusSwitch" htmlFor="statusSwitch">
+                <span className="statusText">{draft.status === "closed" ? "Closed" : "Open"}</span>
+                <input
+                  id="statusSwitch"
+                  className="statusInput"
+                  type="checkbox"
+                  checked={draft.status === "closed"}
+                  onChange={(e) =>
+                    setDraft((prev) => ({
+                      ...prev,
+                      status: e.target.checked ? "closed" : "open",
+                    }))
+                  }
+                />
+                <span className="statusSlider" aria-hidden />
+              </label>
             </div>
           </div>
 
-          <div className="filterBlock experienceFilter">
-            <label htmlFor="experienceRange">Experience (years)</label>
-            <select
-              id="experienceRange"
-              className="experienceSelect"
-              value={draft.exp}
-              onChange={(e) => setDraft((prev) => ({ ...prev, exp: e.target.value }))}
-            >
-              <option value="">Any experience</option>
-              <option value="0-3">0-3</option>
-              <option value="3-5">3-5</option>
-              <option value="5-10">5-10</option>
-              <option value="10-15">10-15</option>
-              <option value="15-20">15-20</option>
-              <option value="20">20+</option>
-            </select>
-          </div>
-
-          <div className="statusFilter">
-            <label className="statusHeading" htmlFor="statusSwitch">
-              Job status
-            </label>
-            <label className="statusSwitch" htmlFor="statusSwitch">
-              <span className="statusText">{draft.status === "closed" ? "Closed" : "Open"}</span>
-              <input
-                id="statusSwitch"
-                className="statusInput"
-                type="checkbox"
-                checked={draft.status === "closed"}
-                onChange={(e) =>
-                  setDraft((prev) => ({
-                    ...prev,
-                    status: e.target.checked ? "closed" : "open",
-                  }))
-                }
-              />
-              <span className="statusSlider" aria-hidden />
-            </label>
-          </div>
-        </div>
-
-        <button type="submit" className="filterApplyBtn">
-          Apply
-        </button>
-      </form>
+          <button type="submit" className="filterApplyBtn">
+            Apply
+          </button>
+        </form>
+      )}
     </header>
   );
 }

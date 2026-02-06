@@ -26,6 +26,34 @@
   color: #6b7280;
 }
 
+.jobsTabs {
+  display: inline-flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.jobsTab {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.jobsTab:hover {
+  border-color: #94a3b8;
+}
+
+.jobsTab.active {
+  color: #1d4ed8;
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+
 .filterBar {
   display: flex;
   align-items: center;
@@ -214,6 +242,48 @@
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.appliedPanel {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.appliedPanel h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.appliedPanel > p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.appliedList {
+  margin-top: 12px;
+}
+
+.appliedCard {
+  border: 1px dashed #cbd5e1;
+  border-radius: 10px;
+  padding: 14px;
+  background: #f8fafc;
+}
+
+.appliedCard h3 {
+  margin: 0 0 6px;
+  font-size: 14px;
+}
+
+.appliedCard p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
 .resultsArea {
   min-height: calc(100vh - 250px);
   display: flex;

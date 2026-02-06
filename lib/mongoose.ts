@@ -3,8 +3,9 @@ import mongoose from "mongoose";
 
 const MONGODB_URI = (() => {
   const uri = process.env.MONGODB_URI;
+  console.log(uri)
   if (!uri) {
-    throw new Error("MONGODB_URI is not set in environment variables");
+    throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
   }
   return uri;
 })();

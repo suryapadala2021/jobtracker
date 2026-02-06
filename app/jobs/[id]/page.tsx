@@ -5,6 +5,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { cache } from "react";
 import getCurrentUser from "@/app/commonFunction/getCurrentUser";
+import JobApplyPanel from "./JobApplyPanel";
 import "./jobDetails.css";
 type SalaryFormatType = "full" | "compact";
 
@@ -345,12 +346,7 @@ export default async function JobInfoPage({ params }: JobInfoPageProps) {
               <p className="jd-side-text">
                 Capture the application now and keep your follow-ups on track.
               </p>
-              <Link
-                href={`/jobs/${job._id}/apply`}
-                className="jd-apply-button"
-              >
-                Apply now
-              </Link>
+              <JobApplyPanel jobId={job._id} />
               <Link
                 href="/jobs"
                 className="jd-secondary-button"
