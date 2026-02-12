@@ -1,0 +1,180 @@
+.recruiterPage {
+  --ink: #0f172a;
+  --muted: #556274;
+  --accent: #0f766e;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+
+  min-height: 100vh;
+  color: var(--ink);
+  background: #f6f7f9;
+  font-family: "Space Grotesk", "IBM Plex Sans", "Segoe UI", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 24px 0 40px;
+}
+
+.topBar {
+  margin: 0 auto;
+  width: min(960px, 100%);
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandTag {
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface);
+}
+
+.primaryButton {
+  border: none;
+  background: var(--accent);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ghostButton {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--ink);
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hero {
+  margin: 0 auto;
+  width: min(960px, 100%);
+  padding: 0 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.heroTitle {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.heroText {
+  margin: 0;
+  color: var(--muted);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.stats {
+  margin: 0 auto;
+  width: min(960px, 100%);
+  padding: 0 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.statCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.statLabel {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.statValue {
+  margin: 8px 0 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.list {
+  margin: 0 auto;
+  width: min(960px, 100%);
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.listTitle {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.listItems {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  color: var(--muted);
+}
+
+.listItems li {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.listItems li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.footer {
+  margin: 0 auto;
+  width: min(960px, 100%);
+  padding: 0 20px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (min-width: 860px) {
+  .stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .topBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

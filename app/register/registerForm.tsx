@@ -1,6 +1,6 @@
 
 "use client";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { registerAction } from "./action";
 import styles from "./registerForm.module.css";
 
@@ -14,6 +14,7 @@ export default function RegisterForm() {
     RegisterFormState,
     FormData
   >(registerAction, initialState);
+  const [role, setRole] = useState<"jobseeker" | "recruiter">("jobseeker");
 
   return (
     <div className={styles.registerShell}>
@@ -97,13 +98,31 @@ export default function RegisterForm() {
               <select
                 disabled={isPending}
                 name="role"
-                defaultValue="jobseeker"
+                value={role}
+                onChange={(event) =>
+                  setRole(event.target.value as "jobseeker" | "recruiter")
+                }
                 className={styles.fieldInput}
               >
                 <option value="jobseeker">Job Seeker</option>
                 <option value="recruiter">Recruiter</option>
               </select>
             </div>
+
+            {role === "recruiter" ? (
+              <div>
+                <label className={styles.fieldLabel}>
+                  Company name
+                </label>
+                <input
+                  disabled={isPending}
+                  name="company"
+                  placeholder="Acme Inc."
+                  className={styles.fieldInput}
+                  required
+                />
+              </div>
+            ) : null}
 
             <button
               type="submit"

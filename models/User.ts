@@ -28,6 +28,11 @@ const UserSchema = new Schema(
       default: "jobseeker",
     },
 
+    company: {
+      type: String,
+      trim: true,
+    },
+
     isActive: {
       type: Boolean,
       default: true,

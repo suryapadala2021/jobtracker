@@ -62,7 +62,6 @@ export async function loginAction(
 
   await setSessionCookie(token);
 
-  // SUCCESS → redirect (never return)
   if (user.role === "jobseeker") {
     redirect("/jobs");
   } else {

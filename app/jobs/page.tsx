@@ -28,14 +28,13 @@ type RawJob = {
 }
 
 export default async function JobsPage({ searchParams }: { searchParams?: { [key: string]: string | undefined } }): Promise<React.ReactElement> {
-    const { email, role } = await getCurrentUser() || {}
-    if (!email) {
+    const { email, role, sub } = await getCurrentUser() || {}
+    if (!email || !role || !sub || !Types.ObjectId.isValid(sub)) {
         redirect("/login");
     }
     if (role && role !== "jobseeker") {
         redirect("/unauthorized")
     }
-
     const params = await searchParams;
     const { page, search, minSalary, status, exp, tab } = params || {};
 

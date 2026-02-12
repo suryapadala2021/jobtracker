@@ -1,24 +1,24 @@
-import styles from "./page.module.css";
+import "./page.css";
 
 export default function HomePage() {
   return (
-    <main className={styles.home}>
+    <main className="home">
       {/* Navbar */}
-      <header className={styles.nav}>
-        <div className={styles.brand}>
+      <header className="nav">
+        <div className="brand">
           HireBridge
         </div>
 
-        <div className={styles.navLinks}>
+        <div className="navLinks">
           <a
             href="/login"
-            className={styles.navLink}
+            className="navLink"
           >
             Login
           </a>
           <a
             href="/register"
-            className={styles.navPrimary}
+            className="navPrimary"
           >
             Get Started
           </a>
@@ -26,29 +26,29 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className={styles.hero}>
-        <h1 className={styles.heroTitle}>
+      <section className="hero">
+        <h1 className="heroTitle">
           Find the right job.  
           <span>
             Hire the right talent.
           </span>
         </h1>
 
-        <p className={styles.heroText}>
+        <p className="heroText">
           A simple platform for job seekers and recruiters to connect, apply,
           and hire faster — built with modern tech.
         </p>
 
-        <div className={styles.heroActions}>
+        <div className="heroActions">
           <a
             href="/register"
-            className={styles.heroPrimary}
+            className="heroPrimary"
           >
             Join as Job Seeker
           </a>
           <a
             href="/register"
-            className={styles.heroSecondary}
+            className="heroSecondary"
           >
             Join as Recruiter
           </a>
@@ -56,31 +56,31 @@ export default function HomePage() {
       </section>
 
       {/* Features */}
-      <section className={styles.features}>
-        <div className={styles.featuresGrid}>
-          <div className={styles.featureCard}>
-            <h3 className={styles.featureTitle}>
+      <section className="features">
+        <div className="featuresGrid">
+          <div className="featureCard">
+            <h3 className="featureTitle">
               For Job Seekers
             </h3>
-            <p className={styles.featureText}>
+            <p className="featureText">
               Discover jobs, apply easily, and track your applications in one place.
             </p>
           </div>
 
-          <div className={styles.featureCard}>
-            <h3 className={styles.featureTitle}>
+          <div className="featureCard">
+            <h3 className="featureTitle">
               For Recruiters
             </h3>
-            <p className={styles.featureText}>
+            <p className="featureText">
               Post jobs, review candidates, and manage hiring workflows.
             </p>
           </div>
 
-          <div className={styles.featureCard}>
-            <h3 className={styles.featureTitle}>
+          <div className="featureCard">
+            <h3 className="featureTitle">
               Built for Speed
             </h3>
-            <p className={styles.featureText}>
+            <p className="featureText">
               Modern stack with Next.js & MongoDB for fast and scalable hiring.
             </p>
           </div>
@@ -88,7 +88,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className={styles.footer}>
+      <footer className="footer">
         © {new Date().getFullYear()} HireBridge. All rights reserved.
       </footer>
     </main>
