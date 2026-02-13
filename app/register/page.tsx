@@ -1,7 +1,8 @@
+import "./registerform.css";
 import RegisterForm from "./registerForm";
 
 
-export default function RegisterPage() {
+export default async function RegisterPage() {
   return (
     <RegisterForm />
   );

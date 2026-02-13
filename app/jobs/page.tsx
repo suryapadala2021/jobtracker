@@ -4,8 +4,8 @@ import Job from "@/models/Job";
 import JobsFeed from "./JobsFeed";
 import { Types } from "mongoose";
 import type { SortOrder } from "mongoose";
-import { mapRawJobToClientJob } from "../commonFunction/convertClientJobs";
-import getCurrentUser from "../commonFunction/getCurrentUser";
+import { mapRawJobToClientJob } from "@/lib/mappers/convertClientJobs";
+import getCurrentUser from "@/lib/auth/getCurrentUser";
 import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -28,13 +28,6 @@ type RawJob = {
 }
 
 export default async function JobsPage({ searchParams }: { searchParams?: { [key: string]: string | undefined } }): Promise<React.ReactElement> {
-    const { email, role, sub } = await getCurrentUser() || {}
-    if (!email || !role || !sub || !Types.ObjectId.isValid(sub)) {
-        redirect("/login");
-    }
-    if (role && role !== "jobseeker") {
-        redirect("/unauthorized")
-    }
     const params = await searchParams;
     const { page, search, minSalary, status, exp, tab } = params || {};
 

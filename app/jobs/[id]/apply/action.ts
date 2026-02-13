@@ -3,7 +3,7 @@
 import { connectDB } from "@/lib/mongoose";
 import Application from "@/models/Application";
 import Job from "@/models/Job";
-import getCurrentUser from "@/app/commonFunction/getCurrentUser";
+import getCurrentUser from "@/lib/auth/getCurrentUser";
 import { Types } from "mongoose";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -38,23 +38,8 @@ export async function applyJobAction(
   }
 
   const currentUser = await getCurrentUser();
-  if (!currentUser?.sub || !currentUser?.email) {
-    return { error: "Please login to apply." };
-  }
 
-  if (currentUser.role !== "jobseeker") {
-    return { error: "Only job seekers can apply." };
-  }
-
-  if (!Types.ObjectId.isValid(parsed.data.jobId)) {
-    return { error: "Invalid job id." };
-  }
-
-  if (!Types.ObjectId.isValid(currentUser.sub)) {
-    return { error: "Invalid user session." };
-  }
-
-  if (currentUser.email.toLowerCase() !== parsed.data.email.toLowerCase()) {
+  if (currentUser && currentUser.email.toLowerCase() !== parsed.data.email.toLowerCase()) {
     return { error: "Use your logged-in email to apply." };
   }
 
@@ -72,8 +57,11 @@ export async function applyJobAction(
     if (job.status !== "open") {
       return { error: "This job is closed for applications." };
     }
+    let userObjectId
+    if (currentUser) {
+      userObjectId = new Types.ObjectId(currentUser.sub);
+    }
 
-    const userObjectId = new Types.ObjectId(currentUser.sub);
 
     const existing = await Application.findOne({
       jobId: job._id,

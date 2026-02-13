@@ -4,7 +4,7 @@ import type { Types } from "mongoose";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { cache } from "react";
-import getCurrentUser from "@/app/commonFunction/getCurrentUser";
+import getCurrentUser from "@/lib/auth/getCurrentUser";
 import JobApplyPanel from "./JobApplyPanel";
 import "./jobDetails.css";
 type SalaryFormatType = "full" | "compact";
@@ -171,13 +171,7 @@ export async function generateMetadata({ params }: JobInfoPageProps) {
    Page Component
 ======================= */
 export default async function JobInfoPage({ params }: JobInfoPageProps) {
-  const { email, role } = await getCurrentUser() || {}
-  if (!email) {
-    redirect("/login");
-  }
-  if (role && role !== "jobseeker") {
-    redirect("/unauthorized")
-  }
+
   const { id } = await params;
 
   const job = await getJobById(id);

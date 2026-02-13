@@ -15,7 +15,7 @@ type LoginFormState = {
 const loginSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6),
-  role: z.enum(["jobseeker", "recruiter"]),
+  role: z.enum(["jobseeker", "recruiter"]).default("jobseeker")
 });
 
 export async function loginAction(
@@ -25,13 +25,13 @@ export async function loginAction(
   const input = {
     email: String(formData.get("email") || "").toLowerCase().trim(),
     password: String(formData.get("password") || ""),
-    role: formData.get("role") as "jobseeker" | "recruiter",
+    role: formData.get("role")
   };
 
   const parsed = loginSchema.safeParse(input);
 
   if (!parsed.success) {
-    return { error: "Invalid email or password format" };
+    return { error: parsed.error.issues[0]?.message ?? "Invalid Data" };
   }
 
   await connectDB();

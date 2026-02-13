@@ -1,4 +1,4 @@
-import { mapRawJobToClientJob } from "@/app/commonFunction/convertClientJobs";
+import { mapRawJobToClientJob } from "@/lib/mappers/convertClientJobs";
 import { connectDB } from "@/lib/mongoose";
 import Job from "@/models/Job";
 

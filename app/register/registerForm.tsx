@@ -2,7 +2,6 @@
 "use client";
 import { useActionState, useState } from "react";
 import { registerAction } from "./action";
-import styles from "./registerForm.module.css";
 
 type RegisterFormState = {
   error?: string;
@@ -17,17 +16,17 @@ export default function RegisterForm() {
   const [role, setRole] = useState<"jobseeker" | "recruiter">("jobseeker");
 
   return (
-    <div className={styles.registerShell}>
-      <div className={styles.registerPromo}>
-        <div className={styles.promoContent}>
-          <h1 className={styles.promoTitle}>
+    <div className="registerShell">
+      <div className="registerPromo">
+        <div className="promoContent">
+          <h1 className="promoTitle">
             Join HireBridge today
           </h1>
-          <p className={styles.promoText}>
+          <p className="promoText">
             Create an account to apply for jobs, track applications, and grow your career.
           </p>
 
-          <ul className={styles.promoList}>
+          <ul className="promoList">
             <li>✅ One profile, multiple applications</li>
             <li>✅ Real-time application updates</li>
             <li>✅ Secure and private</li>
@@ -35,36 +34,36 @@ export default function RegisterForm() {
         </div>
       </div>
 
-      <div className={styles.registerPanel}>
-        <div className={styles.registerCard}>
-          <div className={styles.registerHeader}>
-            <div className={styles.registerBadge}>
+      <div className="registerPanel">
+        <div className="registerCard">
+          <div className="registerHeader">
+            <div className="registerBadge">
               H
             </div>
-            <h2 className={styles.registerTitle}>
+            <h2 className="registerTitle">
               Create your account
             </h2>
-            <p className={styles.registerSubtitle}>
+            <p className="registerSubtitle">
               Fill in your details to get started
             </p>
           </div>
 
-          <form action={formAction} className={styles.form}>
+          <form action={formAction} className="form" key={state?.error}>
             <div>
-              <label className={styles.fieldLabel}>
+              <label className="fieldLabel">
                 Full name
               </label>
               <input
                 disabled={isPending}
                 name="name"
                 placeholder="Jane Doe"
-                className={styles.fieldInput}
+                className="fieldInput"
                 required
               />
             </div>
 
             <div>
-              <label className={styles.fieldLabel}>
+              <label className="fieldLabel">
                 Email address
               </label>
               <input
@@ -72,13 +71,13 @@ export default function RegisterForm() {
                 name="email"
                 type="email"
                 placeholder="you@company.com"
-                className={styles.fieldInput}
+                className="fieldInput"
                 required
               />
             </div>
 
             <div>
-              <label className={styles.fieldLabel}>
+              <label className="fieldLabel">
                 Password
               </label>
               <input
@@ -86,13 +85,13 @@ export default function RegisterForm() {
                 name="password"
                 type="password"
                 placeholder="••••••••"
-                className={styles.fieldInput}
+                className="fieldInput"
                 required
               />
             </div>
 
             <div>
-              <label className={styles.fieldLabel}>
+              <label className="fieldLabel">
                 Account type
               </label>
               <select
@@ -102,7 +101,7 @@ export default function RegisterForm() {
                 onChange={(event) =>
                   setRole(event.target.value as "jobseeker" | "recruiter")
                 }
-                className={styles.fieldInput}
+                className="fieldInput"
               >
                 <option value="jobseeker">Job Seeker</option>
                 <option value="recruiter">Recruiter</option>
@@ -111,14 +110,14 @@ export default function RegisterForm() {
 
             {role === "recruiter" ? (
               <div>
-                <label className={styles.fieldLabel}>
+                <label className="fieldLabel">
                   Company name
                 </label>
                 <input
                   disabled={isPending}
                   name="company"
                   placeholder="Acme Inc."
-                  className={styles.fieldInput}
+                  className="fieldInput"
                   required
                 />
               </div>
@@ -127,21 +126,21 @@ export default function RegisterForm() {
             <button
               type="submit"
               disabled={isPending}
-              className={styles.submitButton}
+              className="submitButton"
             >
               {isPending ? "Creating account..." : "Create account"}
             </button>
 
             <div
-              className={`${styles.errorBanner} ${state?.error ? styles.errorActive : styles.errorIdle}`}
+              className={`errorBanner ${state?.error ? "errorActive" : "errorIdle"}`}
             >
               {state?.error || " "}
             </div>
           </form>
 
-          <p className={styles.registerFooter}>
+          <p className="registerFooter">
             Already have an account?{" "}
-            <a href="/login" className={styles.registerLink}>
+            <a href="/login" className="registerLink">
               Sign in
             </a>
           </p>

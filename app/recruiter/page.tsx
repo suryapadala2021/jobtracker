@@ -1,17 +1,10 @@
 import { Types } from "mongoose";
-import getCurrentUser from "../commonFunction/getCurrentUser";
+import getCurrentUser from "@/lib/auth/getCurrentUser";
 import "./page.css";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 
 export default async function RecruiterPage() {
-   const { email, role, sub } = await getCurrentUser() || {}
-    if (!email || !role || !sub || !Types.ObjectId.isValid(sub)) {
-        redirect("/login");
-    }
-    if (role && role !== "recruiter") {
-        redirect("/unauthorized")
-    }
     // const params = await searchParams;
     // const { } = params || {};
   return (

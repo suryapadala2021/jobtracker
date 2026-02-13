@@ -1,11 +1,11 @@
 "use client";
 
 import "./JobsFeed.css";
-import { ClientJob } from "../commonFunction/convertClientJobs";
+import { ClientJob } from "@/lib/mappers/convertClientJobs";
 import { useRouter, useSearchParams } from "next/navigation";
 import JobCard from "./JobCard";
 import EmptyState from "./EmptyState";
-import { ClientApplication } from "../commonFunction/convertClientApplication";
+import { ClientApplication } from "@/lib/mappers/convertClientApplication";
 import ApplicationCard from "./[id]/apply/ApplicationCard";
 import { useAppliedApplications } from "./AppliedApplicationsProvider";
 

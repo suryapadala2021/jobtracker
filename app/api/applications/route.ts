@@ -1,5 +1,5 @@
-import getCurrentUser from "@/app/commonFunction/getCurrentUser";
-import { mapRawApplicationToClient } from "@/app/commonFunction/convertClientApplication";
+import getCurrentUser from "@/lib/auth/getCurrentUser";
+import { mapRawApplicationToClient } from "@/lib/mappers/convertClientApplication";
 import { connectDB } from "@/lib/mongoose";
 import Application from "@/models/Application";
 import { Types } from "mongoose";

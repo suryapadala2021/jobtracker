@@ -9,7 +9,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import type { ClientApplication } from "../commonFunction/convertClientApplication";
+import type { ClientApplication } from "@/lib/mappers/convertClientApplication";
 
 type AppliedApplicationsResponse = {
   appliedJobIds: string[];

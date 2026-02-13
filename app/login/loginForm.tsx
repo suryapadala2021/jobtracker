@@ -2,7 +2,6 @@
 
 import { useActionState } from "react";
 import { loginAction } from "./action";
-import styles from "./loginForm.module.css";
 
 type LoginFormState = {
   error?: string;
@@ -15,24 +14,24 @@ export default function LoginPage() {
     FormData
   >(loginAction, initialState);
   return (
-    <div className={styles.loginShell}>
+    <div className="loginShell">
       {/* Left panel unchanged */}
 
-      <div className={styles.loginPanel}>
-        <div className={styles.loginCard}>
-          <div className={styles.loginHeader}>
-            <div className={styles.loginBadge}>
+      <div className="loginPanel">
+        <div className="loginCard">
+          <div className="loginHeader">
+            <div className="loginBadge">
               H
             </div>
-            <h2 className={styles.loginTitle}>
+            <h2 className="loginTitle">
               Sign in to your account
             </h2>
-            <p className={styles.loginSubtitle}>
+            <p className="loginSubtitle">
               Enter your credentials to continue
             </p>
           </div>
           <div
-            className={`${styles.errorBanner} ${state?.error ? styles.errorActive : styles.errorIdle}`}
+            className={`errorBanner ${state?.error ? "errorActive" : "errorIdle"}`}
             role="alert"
             aria-live="assertive"
           >
@@ -40,10 +39,10 @@ export default function LoginPage() {
           </div>
 
 
-          <form action={formAction} className={styles.form} key={state?.error}>
+          <form action={formAction} className="form" key={state?.error}>
             {/* Email */}
             <div>
-              <label className={styles.fieldLabel}>
+              <label className="fieldLabel">
                 Email address
               </label>
               <input
@@ -51,13 +50,13 @@ export default function LoginPage() {
                 type="email"
                 name="email"
                 required
-                className={styles.fieldInput}
+                className="fieldInput"
               />
             </div>
 
             {/* Password */}
             <div>
-              <label className={styles.fieldLabel}>
+              <label className="fieldLabel">
                 Password
               </label>
               <input
@@ -65,7 +64,7 @@ export default function LoginPage() {
                 type="password"
                 name="password"
                 required
-                className={styles.fieldInput}
+                className="fieldInput"
               />
             </div>
 
@@ -74,7 +73,7 @@ export default function LoginPage() {
               disabled={isPending}
               name="role"
               defaultValue="jobseeker"
-              className={styles.roleSelect}
+              className="roleSelect"
             >
               <option value="jobseeker">Job Seeker</option>
               <option value="recruiter">Recruiter</option>
@@ -84,15 +83,15 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isPending}
-              className={styles.submitButton}
+              className="submitButton"
             >
               {isPending ? "Signing in..." : "Sign In"}
             </button>
           </form>
 
-          <p className={styles.loginFooter}>
+          <p className="loginFooter">
             Don’t have an account?{" "}
-            <a href="/register" className={styles.loginLink}>
+            <a href="/register" className="loginLink">
               Create one
             </a>
           </p>

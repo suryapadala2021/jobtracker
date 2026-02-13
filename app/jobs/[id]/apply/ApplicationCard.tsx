@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ClientApplication } from "../../../commonFunction/convertClientApplication";
+import { ClientApplication } from "@/lib/mappers/convertClientApplication";
 import "./ApplicationCard.css";
 
 type ApplicationLevel = {

@@ -2,14 +2,19 @@ import { Schema, model, models, type Document, Types } from "mongoose";
 
 export interface IJob extends Document {
   title: string;
+  titleNormalized?: string;
   description: string;
+  descriptionNormalized?: string;
   skills: string[];
+  skillsNormalized?: string[];
   location: string;
+  locationNormalized?: string;
   experienceMin?: number;
   experienceMax?: number;
   salaryMin?: number;
   salaryMax?: number;
   companyName?: string;
+  companyNormalized?: string;
   companyLogo?: string;
   recruiterId: Types.ObjectId;
   status: "open" | "closed";
@@ -23,9 +28,17 @@ const JobSchema = new Schema<IJob>(
       required: true,
       trim: true,
     },
+    titleNormalized: {
+      type: String,
+      trim: true,
+    },
     description: {
       type: String,
       required: true,
+      trim: true,
+    },
+    descriptionNormalized: {
+      type: String,
       trim: true,
     },
     skills: {
@@ -33,11 +46,19 @@ const JobSchema = new Schema<IJob>(
       default: [],
       index: true,
     },
+    skillsNormalized: {
+      type: [String],
+      default: [],
+    },
     location: {
       type: String,
       required: true,
       trim: true,
       index: true,
+    },
+    locationNormalized: {
+      type: String,
+      trim: true,
     },
     experienceMin: {
       type: Number,
@@ -56,6 +77,10 @@ const JobSchema = new Schema<IJob>(
       min: 0,
     },
     companyName: {
+      type: String,
+      trim: true,
+    },
+    companyNormalized: {
       type: String,
       trim: true,
     },
